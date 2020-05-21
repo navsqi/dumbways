@@ -1,0 +1,33 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title Nauval Course | Overview
+    // Bootstrap core CSS
+    link(href='/css/bootstrap.min.css' rel='stylesheet')
+    // Custom styles for this template
+    link(href='/css/album.css' rel='stylesheet')
+  body
+    main(role='main')
+      section.jumbotron.text-center
+        .container
+          h1
+            a(href="/") Nauval Course
+          hr
+          p
+            a.btn.btn-primary.my-2.mr-2(href='/course/insert') Add Course
+            a.btn.btn-primary.my-2.mr-2(href='/content/insert') Add Content
+            a.btn.btn-primary.my-2(href='/author/insert') Add Author
+      .album.py-5.bg-light
+        .container
+          img(src=`/images/${contents[0].thumbnail}`)
+          h1= contents[0].name
+          h6 Author: #{contents[0].author_name}
+          p Duration: #{contents[0].duration}
+          p Descrption: #{contents[0].description}
+          p list Contents
+          ol
+            each content in contents
+              li
+                a(href=`${content.video_link}`) #{content.content_name}

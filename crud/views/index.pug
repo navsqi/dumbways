@@ -1,0 +1,41 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title Nauval Course | Overview
+    // Bootstrap core CSS
+    link(href='/css/bootstrap.min.css' rel='stylesheet')
+    // Custom styles for this template
+    link(href='/css/album.css' rel='stylesheet')
+  body
+    main(role='main')
+      section.jumbotron.text-center
+        .container
+          h1 Nauval Course
+          hr
+          p
+            a.btn.btn-primary.my-2.mr-2(href='/course/insert') Add Course
+            a.btn.btn-primary.my-2.mr-2(href='/content/insert') Add Content
+            a.btn.btn-primary.my-2(href='/author/insert') Add Author
+      .album.py-5.bg-light
+        .container
+          .row
+            if(courses)
+              each course in courses
+                .col-md-4
+                  .card.mb-4.shadow-sm
+                    img(src=`images/${course.thumbnail}` alt=`${course.name}` height='250')
+                    .card-body
+                      .title.overflow-auto
+                        h3.float-left #{course.name}
+                        p.float-right.align-middle
+                          | Author: #{course.author_name}
+                      p.card-text
+                        | #{course.description}
+                      .d-flex.justify-content-between.align-items-center
+                        .btn-group
+                          a.btn.btn-sm.btn-outline-secondary(type='button' href=`/content/${course.id}`) View
+                          form(action=`/course/delete/${course.id}` method="post")
+                            button.btn.btn-sm.btn-outline-danger(type='submit') Delete
+                        small.text-muted 9 mins

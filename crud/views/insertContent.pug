@@ -1,0 +1,43 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title Nauval Course | Insert Course
+    // Bootstrap core CSS
+    link(href='/css/bootstrap.min.css' rel='stylesheet')
+    // Custom styles for this template
+    link(href='/css/album.css' rel='stylesheet')
+  body
+    main(role='main')
+      section.jumbotron.text-center
+        .container
+          h1
+            a(href="/") Nauval Course
+          hr
+          p
+            a.btn.btn-primary.my-2.mr-2(href='/course/insert') Add Course
+            a.btn.btn-primary.my-2.mr-2(href='/content/insert') Add Content
+            a.btn.btn-primary.my-2(href='/author/insert') Add Author
+      .album.py-5.bg-light
+        .container
+          .row
+            form(style='width:100%' method='post' action='/content/insert')
+              .form-group
+                label(for='name') Name
+                input#name.form-control(type='text' name='name')
+              .form-group
+                label(for='video_link') Video
+                input#video_link.form-control(type='text' name='video_link')
+              .form-group
+                label(for='type') type
+                input#type.form-control(type='text' name='type')
+              .form-group
+                label(for='course') Course
+                select#course.form-control(name='course')
+                  if courses
+                    each course in courses
+                      option(value=`${course.id}`) #{course.name}
+              button.btn.btn-primary(type='submit') Save
+
+
