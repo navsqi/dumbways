@@ -15,3 +15,4 @@ Soal **nomor 8** menggunakan Node.js dan mysql, berada di dalam folder _crud_.
 5. Masuk ke direktori crud `cd crud`
 6. Install dependencies `npm install`
 7. Run web server `node app.js`
+8. Buka browser, akses ke http://localhost:3000/
